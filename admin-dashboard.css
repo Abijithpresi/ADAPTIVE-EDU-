@@ -1,0 +1,345 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f5f7;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a.active,
+header nav ul li a:hover {
+    color: #ffdd57;
+}
+
+header .header-actions {
+    display: flex;
+    align-items: center;
+}
+
+header .header-actions button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+header .user-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+header .user-profile img {
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+header .user-profile span {
+    font-weight: 500;
+}
+
+header .user-profile i {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+header .user-profile:hover i {
+    transform: rotate(180deg);
+}
+
+header .user-profile .dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #4a90e2;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+header .user-profile .dropdown a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+header .user-profile .dropdown a:hover {
+    background-color: #357abd;
+}
+
+header .user-profile:hover .dropdown {
+    display: block;
+}
+
+/* Sidebar Styles */
+aside.sidebar {
+    width: 250px;
+    background-color: #4a90e2;
+    height: 100vh;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+aside.sidebar ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+aside.sidebar ul li {
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+}
+
+aside.sidebar ul li:hover {
+    background-color: #357abd;
+}
+
+aside.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+aside.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.sidebar-toggle {
+    display: none;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebar-toggle i {
+    color: white;
+    font-size: 1.5em;
+}
+
+/* Main Content Styles */
+main.content {
+    margin-left: 250px;
+    margin-top: 70px;
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+}
+
+.dashboard-overview h2,
+.charts h2,
+.task-progress h2,
+.recent-activity h2 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stats-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-card i {
+    font-size: 2em;
+    color: #4a90e2;
+    margin-bottom: 10px;
+}
+
+.stats-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.stats-card p {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #4a90e2;
+}
+
+/* Charts Section */
+.chart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Task Progress */
+.task-progress {
+    margin-top: 30px;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar .progress {
+    background-color: #4a90e2;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.task-progress p {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Recent Activity */
+.recent-activity {
+    margin-top: 30px;
+}
+
+.activity-feed {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.activity i {
+    font-size: 1.2em;
+    color: #4a90e2;
+    margin-right: 10px;
+}
+
+.activity p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.activity .time {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #4a90e2;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    aside.sidebar {
+        transform: translateX(-100%);
+    }
+
+    main.content {
+        margin-left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+}
