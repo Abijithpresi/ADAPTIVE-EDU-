@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptive Edu | Login & Signup</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script defer src="js/auth.js"></script>
+</head>
+<body>
+<div class="auth-container">
+  <div class="brand">
+    <img src="assets/logo.png" alt="Adaptive Edu Logo">
+    <h1>Adaptive Edu</h1>
+  </div>
+
+  <div class="form-box">
+    <div class="toggle-box">
+      <button id="loginToggle" class="active">Login</button>
+      <button id="signupToggle">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form">
+      <h2>Login</h2>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form hidden">
+      <h2>Sign Up</h2>
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="signupEmail" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-calendar"></i>
+        <input type="date" id="dob" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-user-tag"></i>
+        <select id="role">
+          <option value="student">Student</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
