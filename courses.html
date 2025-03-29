@@ -3,63 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Platform</title>
-    <link rel="stylesheet" href="css/course.css">
+    <title>Courses - Adaptive Edu</title>
+    <link rel="stylesheet" href="css/course.css"> <!-- Using the same CSS you provided -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
+
+    <!-- Header -->
     <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo">
+            <span>Adaptive Edu</span>
+        </div>
         <nav>
-            <div class="logo">
-
-
-                <img src="assets/logo.png" alt="Adaptive Edu Logo" class="logo-img">
-                <span>Learning Platform</span>
-            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="ai-recommendations.html">AI Recommendations</a></li>
+                <li><a href="courses.html">Courses</a></li>
+               <li><a href="ai-recommendations.html">AI Recommendations</a></li>
                 <li><a href="gamification.html">Gamification</a></li>
                 <li><a href="ai-chatbot.html">AI Chatbot</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
                 <li><a href="profile-settings.html">Profile Settings</a></li>
+
             </ul>
         </nav>
     </header>
 
-    <main>
-        <!-- Course Section -->
-        <section id="courses" class="course-section">
-           <div class="enrolled-header">
-    <h2>Your Enrolled Courses</h2>
-</div>
-            <div class="course-container">
-                <div class="course-card">
-                    <h3>Python Programming</h3>
-                    <p>Master Python from beginner to advanced.</p>
-                    <button>Continue Learning</button>
-                </div>
-                <div class="course-card">
-                    <h3>JavaScript Fundamentals</h3>
-                    <p>Learn JavaScript for web development.</p>
-                    <button>Continue Learning</button>
-                </div>
-                <div class="course-card">
-                    <h3>Machine Learning Basics</h3>
-                    <p>Introduction to AI and ML concepts.</p>
-                    <button>Continue Learning</button>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        Browse Our Courses & Start Learning!
+    </section>
+
+    <!-- Enrolled Courses -->
+    <section class="enrolled-header">
+        <h2>Explore Our Courses</h2>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="course-section">
+        <div class="course-container">
+            
+            <!-- Free Course Example -->
+            <div class="course-card">
+                <div class="icon">💻</div>
+                <h3>HTML & CSS Basics</h3>
+                <p>Learn the fundamentals of web development.</p>
+                <a href="#" class="btn">View</a>
             </div>
-        </section>
-    </main>
 
+            <!-- Another Free Course -->
+            <div class="course-card">
+                <div class="icon">🎨</div>
+                <h3>Graphic Design Essentials</h3>
+                <p>Master the basics of visual design.</p>
+                <a href="#" class="btn">View</a>
+            </div>
+
+            <!-- Paid Course Example -->
+            <div class="course-card">
+                <div class="icon">🚀</div>
+                <h3>Advanced JavaScript</h3>
+                <p>Deep dive into JavaScript for web development.</p>
+           <a href="payment.html" class="btn">Buy Now</a>
+
+            </div>
+
+            <!-- Another Paid Course -->
+            <div class="course-card">
+                <div class="icon">🛠️</div>
+                <h3>Full-Stack Web Development</h3>
+                <p>Become a full-stack developer from scratch.</p>
+                <a href="payment.html" class="btn">Buy Now</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Learning Platform. All rights reserved.</p>
+        <p>&copy; 2025 Adaptive Edu. All rights reserved.</p>
     </footer>
+<script src="js/course.js"></script>
 
-    <script src="js/course.js"></script>
 </body>
 </html>
