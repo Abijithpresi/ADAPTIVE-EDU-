@@ -7,9 +7,12 @@
   <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script defer src="js/auth.js"></script>
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
+
 <div class="auth-container">
   <div class="brand">
     <img src="assets/logo.png" alt="Adaptive Edu Logo">
@@ -22,49 +25,96 @@
       <button id="signupToggle">Sign Up</button>
     </div>
 
+    <div id="message"></div>
+
     <!-- Login Form -->
-    <form id="loginForm" class="form">
+    <form id="loginForm" class="form" action="login.php" method="POST">
       <h2>Login</h2>
       <div class="input-group">
-        <i class="fas fa-envelope"></i>
-        <input type="email" id="loginEmail" placeholder="Email" required>
+        <i class="fas fa-user"></i>
+        <input type="text" name="loginUsername" placeholder="Username" required>
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
-        <input type="password" id="loginPassword" placeholder="Password" required>
+        <input type="password" name="loginPassword" placeholder="Password" required>
       </div>
       <button type="submit" class="btn">Login</button>
     </form>
-
+    
     <!-- Signup Form -->
-    <form id="signupForm" class="form hidden">
+    <form id="signupForm" class="form hidden" action="register.php" method="POST">
       <h2>Sign Up</h2>
       <div class="input-group">
         <i class="fas fa-user"></i>
-        <input type="text" id="signupName" placeholder="Full Name" required>
+        <input type="text" name="signupName" placeholder="Full Name" required>
       </div>
       <div class="input-group">
         <i class="fas fa-envelope"></i>
-        <input type="email" id="signupEmail" placeholder="Email" required>
+        <input type="email" name="signupEmail" placeholder="Email" required>
       </div>
       <div class="input-group">
-        <i class="fas fa-calendar"></i>
-        <input type="date" id="dob" required>
-      </div>
-      <div class="input-group">
-        <i class="fas fa-user-tag"></i>
-        <select id="role">
-          <option value="student">Student</option>
-          <option value="admin">Admin</option>
-        </select>
+        <i class="fas fa-user"></i>
+        <input type="text" name="signupUsername" placeholder="Username" required>
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
-        <input type="password" id="signupPassword" placeholder="Password" required>
+        <input type="password" name="signupPassword" placeholder="Password" required>
       </div>
       <button type="submit" class="btn">Sign Up</button>
     </form>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const loginToggle = document.getElementById("loginToggle");
+  const signupToggle = document.getElementById("signupToggle");
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+  const messageDiv = document.getElementById("message");
+
+  loginToggle.addEventListener("click", function () {
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+    loginToggle.classList.add("active");
+    signupToggle.classList.remove("active");
+  });
+
+  signupToggle.addEventListener("click", function () {
+    signupForm.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+    signupToggle.classList.add("active");
+    loginToggle.classList.remove("active");
+  });
+
+  function handleFormSubmit(form, event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+    })
+    .then(response => response.text())
+    .then(data => {
+      messageDiv.innerHTML = data;
+      messageDiv.style.color = data.includes("successful") ? "green" : "red";
+      if (data.includes("successful") && form.id === "loginForm") {
+        window.location.href = "student-dashboard.html";
+      }
+    })
+    .catch(error => console.error("Error:", error));
+  }
+
+  loginForm.addEventListener("submit", function (event) {
+    handleFormSubmit(loginForm, event);
+  });
+
+  signupForm.addEventListener("submit", function (event) {
+    handleFormSubmit(signupForm, event);
+  });
+});
+</script>
+
 </body>
 </html>
