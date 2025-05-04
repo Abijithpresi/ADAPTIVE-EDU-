@@ -1,69 +1,77 @@
-// Dark/Light Mode Toggle
-const toggleMode = document.getElementById('toggleMode');
-const body = document.body;
+// ========== XP Bar Animation ========== //
+function updateXP(currentXP, maxXP) {
+  const xpProgress = document.getElementById('xpProgress');
+  const xpLabel = document.getElementById('xpLabel');
 
-toggleMode.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    toggleMode.innerHTML = body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-});
+  const percentage = Math.min((currentXP / maxXP) * 100, 100);
+  xpProgress.style.width = percentage + '%';
+  xpLabel.textContent = `XP: ${currentXP}/${maxXP}`;
 
-// Typing Indicator Simulation
-const chatHistory = document.querySelector('.chat-history');
-const typingIndicator = document.querySelector('.message.typing');
+  if (percentage === 100) {
+    unlockAchievement("XP Master! 🚀");
+  }
+}
 
-setTimeout(() => {
-    typingIndicator.remove();
-    const botMessage = document.createElement('div');
-    botMessage.classList.add('message', 'bot');
-    botMessage.innerHTML = '<p>Sure! Let me help you with Python.</p>';
-    chatHistory.appendChild(botMessage);
-    chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom
-}, 2000);
+// ========== Surprise XP Popup ========== //
+function showSurpriseXP(points = 10) {
+  const popup = document.getElementById('surpriseXP');
+  popup.textContent = `🎉 +${points} XP! Great Question!`;
+  popup.classList.add('active');
 
-// Send Message Functionality
-const chatInput = document.querySelector('.chat-input input');
-const sendButton = document.querySelector('.chat-input button');
+  setTimeout(() => {
+    popup.classList.remove('active');
+  }, 3000);
+}
 
-sendButton.addEventListener('click', () => {
-    const messageText = chatInput.value.trim();
-    if (messageText) {
-        const userMessage = document.createElement('div');
-        userMessage.classList.add('message', 'user');
-        userMessage.innerHTML = `<p>${messageText}</p>`;
-        chatHistory.appendChild(userMessage);
-        chatInput.value = '';
-        chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom
+// ========== Achievement Unlock Popup ========== //
+function unlockAchievement(text) {
+  const popup = document.getElementById('achievementPopup');
+  const achievementText = document.getElementById('achievementText');
 
-        // Simulate bot response
-        setTimeout(() => {
-            const botMessage = document.createElement('div');
-            botMessage.classList.add('message', 'bot');
-            botMessage.innerHTML = `<p>Got it! Here's the answer...</p>`;
-            chatHistory.appendChild(botMessage);
-            chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom
-        }, 1000);
-    }
-});
+  achievementText.textContent = text;
+  popup.classList.add('active');
 
-// Quick Replies Functionality
-const quickReplies = document.querySelectorAll('.quick-replies button');
+  setTimeout(() => {
+    popup.classList.remove('active');
+  }, 4000);
+}
 
-quickReplies.forEach(button => {
-    button.addEventListener('click', () => {
-        const messageText = button.textContent;
-        const userMessage = document.createElement('div');
-        userMessage.classList.add('message', 'user');
-        userMessage.innerHTML = `<p>${messageText}</p>`;
-        chatHistory.appendChild(userMessage);
-        chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom
+// ========== Modal Management (Optional) ========== //
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+}
 
-        // Simulate bot response
-        setTimeout(() => {
-            const botMessage = document.createElement('div');
-            botMessage.classList.add('message', 'bot');
-            botMessage.innerHTML = `<p>Here's some information about ${messageText}.</p>`;
-            chatHistory.appendChild(botMessage);
-            chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom
-        }, 1000);
+// ========== Confetti Canvas (Super Bonus 🎉) ========== //
+function throwConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confetti = Array.from({length: 150}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 6 + 2,
+    speed: Math.random() * 3 + 1,
+    color: `hsl(${Math.random() * 360}, 70%, 60%)`
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    confetti.forEach(c => {
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+      ctx.fillStyle = c.color;
+      ctx.fill();
+
+      c.y += c.speed;
+      if (c.y > canvas.height) c.y = 0;
     });
-});
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
